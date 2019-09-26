@@ -12,10 +12,7 @@ const config = {
             {
                 test: /\.(j|t)sx?$/,
                 use: {
-                    loader: 'babel-loader',
-                    options: {
-                        cacheDirectory: true
-                    }
+                    loader: 'babel-loader'
                 },
                 exclude: /node_modules/
             }
