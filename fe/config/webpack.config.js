@@ -2,10 +2,12 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const config = {
+    mode: "development",
+    devtool: 'cheap-module-eval-source-map',
     entry: './src/index.jsx',
     output: {
-        path: '/dist',
-        filename: '[name].js'
+        path: path.resolve(__dirname, '../dist'),
+        filename: 'bundle.js'
     },
     module: {
         rules: [
@@ -25,7 +27,7 @@ const config = {
         new HtmlWebpackPlugin({
             title: '我的第一个demo',
             filename: 'index.html',
-            template: 'index.html',
+            template: path.resolve(__dirname, '../index.ejs'),
             minify: {
                 removeComments: true, // 移除html中的注释
                 collapseWhitespace: true, // 删除html中的换行符和空白符
