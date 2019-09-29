@@ -1,0 +1,45 @@
+.myBlog {
+    .main {
+        width : 1024px;
+        margin: 0 auto;
+
+        .blogHeader {
+            background-color: #20394c;
+
+            .menu {
+                font-size       : 16px;
+                background-color: #20394c;
+                width           : 1024px;
+                height          : 64px;
+                line-height     : 64px;
+                display         : flex;
+
+                li {
+                    flex : column;
+                    width: 10%;
+
+                    a {
+                        color: #fff;
+                        width: 100%;
+                        text-align: center;
+                        display: block;
+                    }
+                    a:hover{
+                        background-color:rgba(47, 106, 151, 0.5);
+                    }
+                }
+
+
+
+            }
+
+            .ant-menu-horizontal {
+                border: none;
+            }
+        }
+    }
+}
+
+.ant-layout {
+    background-color: #20394c !important;
+}

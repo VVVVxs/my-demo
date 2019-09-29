@@ -1,6 +1,6 @@
 import * as React from 'react';
-const App = () => {
-    return(
+const App: React.FC = () => {
+    return (
         <div>
             <h1>Hello World</h1>
         </div>

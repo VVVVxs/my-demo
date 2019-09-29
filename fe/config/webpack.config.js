@@ -4,7 +4,7 @@ const path = require('path');
 const config = {
     mode: "development",
     devtool: 'cheap-module-eval-source-map',
-    entry: './src/index.jsx',
+    entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'bundle.js'
@@ -17,9 +17,35 @@ const config = {
                     loader: 'babel-loader'
                 },
                 exclude: /node_modules/
+            },
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                loader: 'ts-loader',
+                options: {
+                    transpileOnly: true,
+                    experimentalWatchApi: true
+                }
+            },
+            {
+                test: /\.css$/,
+                loader: ['style-loader', 'css-loader']
+            }, {
+                test: /\.less$/,
+                loader: ['style-loader', 'css-loader', 'less-loader']
+            },
+            {
+                test: /\.(png|jgp|svg)$/,
+                loader: ['file-loader', 'url-loader']
             }
         ]
     },
+    // query: {
+    //     presets: ['env', 'react'],
+    //     plugins: [
+    //         ['import', { librayName: 'antd', style: 'css' }]
+    //     ]
+    // },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
     },
