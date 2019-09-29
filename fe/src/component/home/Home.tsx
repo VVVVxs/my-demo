@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Layout } from 'antd';
-import NavList from './componets/NavList';
+import { NavList, Banner } from './componets/index';
 import '../../style/Home/index.less';
 import '../../style/index.less';
 const { Header } = Layout;
@@ -11,6 +11,7 @@ const Home: React.FC = () => {
                 <div className="main">
                     <Header className='blogHeader'>
                         <NavList />
+                        <Banner />
                     </Header>
                 </div>
             </Layout>
