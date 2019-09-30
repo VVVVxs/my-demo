@@ -36,32 +36,58 @@
 
     .main {
         width : 1024px;
+        height: 100%;
         margin: 0 auto;
 
-        .banner {
-            width      : 650px;
-            height     : 380px;
-            position   : relative;
-            overflow   : hidden;
-            white-space: nowrap;
+        .bannerMain {
+            width   : 100%;
+            height  : 100;
+            position: relative;
 
-            .bannerContainer {
-                width     : 650*4px;
-                height    : 100%;
-                transition: all 1s ease;
-                position  : relative;
+            .banner {
+                width      : 700px;
+                height     : 380px;
+                position   : relative;
+                overflow   : hidden;
+                white-space: nowrap;
 
-                li {
-                    float: left;
-                }
+                .bannerContainer {
+                    width   : 700*4px;
+                    height  : 100%;
+                    position: relative;
 
-                img {
-                    width : 650px;
-                    height: 380px;
+                    li {
+                        float: left;
+                    }
+
+                    img {
+                        width : 700px;
+                        height: 380px;
+                    }
                 }
             }
 
+            .doc {
+                width   : 100px;
+                margin  : 0 auto;
+                position: absolute;
+                top     : 350px;
+                left    : 310px;
+
+                li {
+                    width        : 11px;
+                    margin: 0 8px;
+                    float        : left;
+                    display      : block;
+                    height       : 11px;
+                    border       : 1px solid #999;
+                    border-radius: 50%;
+                }
+            }
         }
+
+
+
     }
 
 }
