@@ -7,7 +7,8 @@ const config = {
     entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, '../dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -40,12 +41,6 @@ const config = {
             }
         ]
     },
-    // query: {
-    //     presets: ['env', 'react'],
-    //     plugins: [
-    //         ['import', { librayName: 'antd', style: 'css' }]
-    //     ]
-    // },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
     },
@@ -61,6 +56,9 @@ const config = {
             }
         }),
         new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
+    devServer: {
+        historyApiFallback: true
+    }
 }
 module.exports = config;

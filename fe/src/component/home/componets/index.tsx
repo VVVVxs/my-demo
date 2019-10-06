@@ -1,7 +1,13 @@
 import Banner from './Banner';
 import NavList from './NavList';
+import Tips from './Tips';
+import AvatarCar from './AvatarCar';
+import PersonalTotal from './PersonalTotal';
 
 export {
     Banner,
-    NavList
+    NavList,
+    Tips,
+    AvatarCar,
+    PersonalTotal
 }
