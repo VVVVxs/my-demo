@@ -3,9 +3,32 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "dev": "gulp --task  --cwd ./"
+  },
   "dependencies": {
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-logger": "^3.1.1",
+    "@types/node": "^12.7.11",
     "koa": "^2.8.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-logger": "^3.2.1",
     "koa-router": "^7.4.0",
-    "koa-static": "^5.0.0"
+    "koa-static": "^5.0.0",
+    "typescript": "^3.6.3",
+    "vinyl-buffer": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.50",
+    "@types/koa-router": "^7.0.42",
+    "@types/koa-static": "^4.0.1",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-nodemon": "^2.4.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-typescript": "^5.0.1",
+    "gulp-uglify": "^3.0.2",
+    "run-sequence": "^2.2.1",
+    "uglify-es": "^3.3.9"
   }
 }
