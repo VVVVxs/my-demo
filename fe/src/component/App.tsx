@@ -15,7 +15,6 @@ const App: React.FC = () => {
                 </Header>
                 <Content className="main">
                     <Routes />
-
                 </Content>
             </Layout>
         </BrowserRouter>

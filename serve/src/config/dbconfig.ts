@@ -1,1 +1,1 @@
-export const db = `mongodb://localhost:27017/local`;
+export const db = `mongodb://localhost:27017/demo`;

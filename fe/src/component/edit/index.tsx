@@ -18,7 +18,7 @@ const Edit: React.FC = () => {
         editor.create()
     }, [])
     const hanldClick = () => {
-        console.log(editorContent);
+         
     }
     return (
         <div className='editor'>

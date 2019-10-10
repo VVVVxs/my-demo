@@ -4,8 +4,9 @@ import * as logger from 'koa-logger';
 import * as mongoose from 'mongoose';
 import router from './router';
 import { db } from './config/dbconfig';
+import { initModal } from './modal/index';
 // 连接数据库
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }, initModal).then(() => {
     const app = new koa();
     // 中间件
     app.use(bodyParser());
