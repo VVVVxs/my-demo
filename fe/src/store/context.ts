@@ -1,6 +1,12 @@
 import React, { createContext } from 'react';
+import ReactDOM from 'react-dom';
+
+import reducer from './reducer';
+const initState = {
+    count: 0
+}
 interface IContext {
-    article:  IArticle;
+    article: IArticle;
 };
 
 interface IArticle {
@@ -10,7 +16,3 @@ interface IArticle {
     content: string;
     isDeleted: number;
 }
-
-const Context = createContext({
-    article: undefined
-})
