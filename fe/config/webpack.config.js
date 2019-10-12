@@ -58,7 +58,14 @@ const config = {
         new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
-        historyApiFallback: true
+        historyApiFallback: true,
+        proxy:{
+            '/api': {
+                target: 'http://localhost:3000',
+                secure:false,
+                changeOrigin: true
+            }
+        }
     }
 }
 module.exports = config;

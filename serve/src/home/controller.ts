@@ -18,3 +18,11 @@ export const addArticle = async (ctx: Router.IRouterContext, next: () => Promise
         ctx.throw(500);
     }
 }
+export const getArticle = async (ctx: Router.IRouterContext, next: () => Promise<any>) => {
+    try {
+        const articleList = article.find();
+        ctx.body = articleList;
+    } catch (err) {
+        ctx.throw(500);
+    }
+}
