@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const ConfigBaseURL = require('./appConfig').ConfigBaseURL
 const config = {
     mode: "development",
     devtool: 'cheap-module-eval-source-map',
@@ -61,7 +62,7 @@ const config = {
         historyApiFallback: true,
         proxy:{
             '/api': {
-                target: 'http://localhost:3000',
+                target: ConfigBaseURL,
                 secure:false,
                 changeOrigin: true
             }

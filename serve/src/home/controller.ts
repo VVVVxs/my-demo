@@ -1,4 +1,5 @@
 import * as Router from 'koa-router';
+import { Document } from 'mongoose';
 import { article } from '../modal/article';
 export const testInit = async (ctx: Router.IRouterContext, next: () => Promise<any>) => {
     try {
@@ -20,8 +21,9 @@ export const addArticle = async (ctx: Router.IRouterContext, next: () => Promise
 }
 export const getArticle = async (ctx: Router.IRouterContext, next: () => Promise<any>) => {
     try {
-        const articleList = article.find();
-        ctx.body = articleList;
+        const a = await article.findOne({ isDeleted: 0 }).sort({ baseCreateOn: -1 }).limit(1);
+        ctx.body = a ;
+
     } catch (err) {
         ctx.throw(500);
     }

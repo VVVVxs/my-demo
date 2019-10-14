@@ -1,8 +1,9 @@
+import { IArticle } from '../../../dataTypes/IArticle';
 export interface IInitState {
-    count: number;
+    ininArticle: IArticle | undefined;
 }
 export default function initState(): IInitState {
     return {
-        count: 1
+        ininArticle: undefined
     }
 }
