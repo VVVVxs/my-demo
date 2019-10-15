@@ -1,1 +1,0 @@
-export const ConfigBaseURL = 'http://localhost:3000/'

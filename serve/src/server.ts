@@ -9,7 +9,9 @@ import { initModal } from './modal/index';
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }, initModal).then(() => {
     const app = new koa();
     // 中间件
-    app.use(bodyParser());
+    app.use(bodyParser({
+        jsonLimit: '10mb'
+    }));
     app.use(logger());
     app.use(async (ctx, next) => {
         try {

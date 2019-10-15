@@ -10,10 +10,14 @@ const Home: React.FC = () => {
     return (
         <div>
             <Provider reducer={reducer} initValue={initState()}>
-                <Banner />
-                <Tips />
-                <AvatarCar />
-                <Article />
+                <div className='mainLeft'>
+                    <Banner />
+                    <Article />
+                </div>
+                <div className='mainRight'>
+                    <Tips />
+                    <AvatarCar />
+                </div>
             </Provider>
 
         </div>

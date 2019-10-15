@@ -41,92 +41,108 @@
         margin     : 0 auto;
         padding-top: 20px;
 
-        .bannerMain {
-            width   : 700px;
-            height  : 100%;
-            position: relative;
-            float   : left;
+        .mainLeft {
+            width: 700px;
+            float: left;
 
-            .banner {
-                width      : 700px;
-                height     : 380px;
-                position   : relative;
-                overflow   : hidden;
-                white-space: nowrap;
+            .bannerMain {
+                width   : 700px;
+                height  : 100%;
+                position: relative;
+                float   : left;
 
-                .bannerContainer {
-                    width   : 700*4px;
-                    height  : 100%;
-                    position: relative;
+                .banner {
+                    width      : 700px;
+                    height     : 380px;
+                    position   : relative;
+                    overflow   : hidden;
+                    white-space: nowrap;
+
+                    .bannerContainer {
+                        width   : 700*4px;
+                        height  : 100%;
+                        position: relative;
+
+                        li {
+                            float: left;
+                        }
+
+                        img {
+                            width : 700px;
+                            height: 380px;
+                        }
+                    }
+                }
+
+                .doc {
+                    width   : 100px;
+                    margin  : 0 auto;
+                    position: absolute;
+                    top     : 350px;
+                    left    : 310px;
 
                     li {
-                        float: left;
+                        width        : 11px;
+                        margin       : 0 8px;
+                        float        : left;
+                        display      : block;
+                        height       : 11px;
+                        border       : 1px solid #999;
+                        border-radius: 50%;
+                        cursor       : pointer;
+
                     }
-
-                    img {
-                        width : 700px;
-                        height: 380px;
-                    }
-                }
-            }
-
-            .doc {
-                width   : 100px;
-                margin  : 0 auto;
-                position: absolute;
-                top     : 350px;
-                left    : 310px;
-
-                li {
-                    width        : 11px;
-                    margin       : 0 8px;
-                    float        : left;
-                    display      : block;
-                    height       : 11px;
-                    border       : 1px solid #999;
-                    border-radius: 50%;
-                    cursor       : pointer;
-
                 }
             }
         }
 
-        .tipContainer {
-            float      : left;
-            width      : 300px;
-            height     : 120px;
-            border     : 1px solid #ccc;
-            padding    : 40px;
-            text-align : center;
-            background : #fff;
+        .mainRight {
+            width: 300px;
+            overflow: hidden;
+            float: left;
             margin-left: 20px;
-            box-shadow : 0px 2px 1px #999;
+            .tipContainer {
+                float      : left;
+                width      : 300px;
+                height     : 120px;
+                border     : 1px solid #ccc;
+                padding    : 40px;
+                text-align : center;
+                background : #fff;
+                box-shadow : 0px 2px 1px #999;
 
-            p {
-                font-size: 16px;
+                p {
+                    font-size: 16px;
+                }
             }
-        }
 
-        .avatarCar {
-            width      : 300px;
-            float      : left;
-            margin-Left: 20px;
-            margin-Top : 10px;  
-            .PersonalTotal{
-                height: 50px;
-                margin-top: 15px;   
-                margin-bottom: -8px;
-                padding-left: 10px;
-                li{
-                    float: left;
-                    width: 80px;
-                    text-align: center;
-                    p{
-                        margin: 0px;
+            .avatarCar {
+                width      : 300px;
+                float      : left;
+                margin-Top : 10px;
+
+                .PersonalTotal {
+                    height       : 50px;
+                    margin-top   : 15px;
+                    margin-bottom: -8px;
+                    padding-left : 10px;
+
+                    li {
+                        float     : left;
+                        width     : 80px;
+                        text-align: center;
+
+                        p {
+                            margin: 0px;
+                        }
                     }
                 }
             }
         }
+
+
+
+
 
 
 

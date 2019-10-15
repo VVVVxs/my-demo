@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Home from './home/Home';
+import Home from './home';
 import Edit from '../component/edit/index';
 
 const Routes = () => {

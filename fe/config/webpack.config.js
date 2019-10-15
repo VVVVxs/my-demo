@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const ConfigBaseURL = require('./appConfig').ConfigBaseURL
+const ConfigBaseURL = require('./appConfig.js').ConfigBaseURL
 const config = {
     mode: "development",
     devtool: 'cheap-module-eval-source-map',

@@ -1,9 +1,8 @@
-import { Service } from '../../../util/axios';
+import axios, { AxiosResponse } from 'axios'
 export const getInitArticle = async () => {
-    const a = await Service({
-        url: '/api/get-article',
-        method: 'POST'
+    return await axios.post('/api/get-article').then((res: AxiosResponse) => {
+        return res.data;
+    }).catch((err) => {
+        console.log(err);
     })
-    console.log('bbb', a);
-    return a;
 }
