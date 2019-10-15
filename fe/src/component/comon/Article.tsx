@@ -14,7 +14,7 @@ const Article: React.FC = () => {
         (async function getArticle() {
             const b: IArticle = await getInitArticle();
             dispatch({ type: 'GET_INIT_ARTICLE', payload: b })
-            if (Content.current !== null) {
+            if (Content.current !== null && b) {
                 Content.current.innerHTML = b.content;
             }
 
