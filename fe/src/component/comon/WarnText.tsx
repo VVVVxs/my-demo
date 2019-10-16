@@ -4,9 +4,9 @@ interface IWarnText {
 }
 const WarnText = (props: IWarnText) => {
     return (
-        <React.Fragment>
+        <div>
             <span style={{ color: 'red' }}>*</span><span>{props.text}</span>
-        </React.Fragment>
+        </div>
     )
 }
 export default WarnText

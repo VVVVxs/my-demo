@@ -7,7 +7,7 @@ const Banner: React.FC = () => {
         '../../../../static/images/2.jpg',
         '../../../../static/images/3.jpg'
     ]
-    const [marginLeft, setMarginLeft] = useState(0);
+    const [marginLeft, setMarginLeft] = useState(0); 
     const [active, setActive] = useState(0);
     const [timeerCount, setTimeerCount] = useState(-1);
     const [timeoutCount, setTimeoutCount] = useState(-1);

@@ -9,14 +9,12 @@ const ArticleList = () => {
     useEffect(() => {
         async function getList() {
             const result = await getArticleList();
-            console.log(result);
             dispatch({ type: 'GET_ARTICLE_LIST', payload: result });
 
         }
         getList();
     }, [])
 
-    console.log(state);
 
     return (
         <List
