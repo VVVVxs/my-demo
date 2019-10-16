@@ -2,8 +2,8 @@ import * as Router from 'koa-router';
 import { article } from '../modal/article';
 export const testInit = async (ctx: Router.IRouterContext, next: () => Promise<any>) => {
     try {
-        const a = await article.find({});
-        ctx.body = a ;
+        const result = await article.find({});
+        ctx.body = result;
     } catch (err) {
         ctx.throw(500);
     }
@@ -20,8 +20,18 @@ export const addArticle = async (ctx: Router.IRouterContext, next: () => Promise
 }
 export const getArticle = async (ctx: Router.IRouterContext, next: () => Promise<any>) => {
     try {
-        const a = await article.findOne({ isDeleted: 0 }).sort({ createBaseOn: -1 }).limit(1);
-        ctx.body = a ;
+        const result = await article.findOne({ isDeleted: 0 }).sort({ createBaseOn: -1 }).limit(1);
+        ctx.body = result;
+
+    } catch (err) {
+        ctx.throw(500);
+    }
+}
+
+export const getArticleList = async (ctx: Router.IRouterContext, next: () => Promise<any>) => {
+    try {
+        const result = await article.find({})
+        ctx.body = result;
 
     } catch (err) {
         ctx.throw(500);

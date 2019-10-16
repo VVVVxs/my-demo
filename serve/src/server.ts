@@ -10,7 +10,7 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }, initMo
     const app = new koa();
     // 中间件
     app.use(bodyParser({
-        jsonLimit: '10mb'
+        jsonLimit: '16mb'
     }));
     app.use(logger());
     app.use(async (ctx, next) => {

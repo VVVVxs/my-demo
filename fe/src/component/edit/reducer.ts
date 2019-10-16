@@ -1,11 +1,13 @@
 export interface IEdit {
     title: string;
     content: string;
+    description: string;
     spinning: boolean;
 }
 export const initState: IEdit = {
     title: '',
     content: '',
+    description: '',
     spinning: false
 }
 
@@ -26,6 +28,11 @@ export const reducer = (state: any, action: { type: string, payload: any }) => {
             return {
                 ...state,
                 title: action.payload
+            };
+        case 'CHANGE_DESCRIPTION':
+            return {
+                ...state,
+                description: action.payload
             };
     }
 }
