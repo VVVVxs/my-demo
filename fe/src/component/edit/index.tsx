@@ -25,7 +25,7 @@ const Edit: React.FC = () => {
         const editor = new E(editTool.current)
         // 使用 onchange 函数监听内容的变化，并实时更新到 state 中
         editor.customConfig.onchange = (html: any) => {
-            if(html!==''){
+            if (html !== '') {
                 setContentWarn(false);
             }
             dispatch({ type: 'SAVE_CONTENT', payload: html })
@@ -47,14 +47,14 @@ const Edit: React.FC = () => {
             setContentWarn(true)
         }
         if (!!state.content && !!state.title && !!state.description) {
-            addAticle(state.title, state.content)
+            addAticle(state.title, state.content, state.description)
         }
     }
     const changValue = (event: React.ChangeEvent<any>, type: string) => {
         if (!!event.target.value) {
-            if(type==='CHANGE_TITLE'){
+            if (type === 'CHANGE_TITLE') {
                 setTitleWarn(false);
-            }else{
+            } else {
                 setDescriptionWarn(false);
             }
         }
