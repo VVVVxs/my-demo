@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Banner, Tips, AvatarCar } from './componets/index';
-import { Article } from '../comon';
+import { Banner, Tips, AvatarCar, ArticleBox } from './componets/index';
 import '../../style/Home/index.less';
 import '../../style/index.less';
 import { Provider } from './store/Provider';
@@ -12,7 +11,7 @@ const Home: React.FC = () => {
             <Provider reducer={reducer} initValue={initState()}>
                 <div className='mainLeft'>
                     <Banner />
-                    <Article />
+                    <ArticleBox />
                 </div>
                 <div className='mainRight'>
                     <Tips />

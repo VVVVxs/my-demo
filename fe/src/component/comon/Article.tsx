@@ -1,30 +1,28 @@
 import * as React from 'react';
-import { useAppState } from '../home/store/Provider';
-import { IInitState } from '../home/store/store';
-import { getInitArticle } from '../home/store/request';
 import { IArticle } from '../../dataTypes/IArticle';
 import './Article.less';
-
-const Article: React.FC = () => {
-    const { useEffect, useState, useRef } = React;
-    const [state, dispatch]: [IInitState, any] = useAppState();
-    // const [article, setArticle] = useState<undefined | IArticle>(undefined);
+interface IArticleProps {
+    detail: IArticle | undefined,
+}
+const Article = (props: IArticleProps) => {
+    const { useEffect, useRef } = React;
     const Content: any = useRef(null);
+
     useEffect(() => {
-        (async function getArticle() {
-            const b: IArticle = await getInitArticle();
-            dispatch({ type: 'GET_INIT_ARTICLE', payload: b })
-            if (Content.current !== null && b) {
-                Content.current.innerHTML = b.content;
-            }
+        if (Content.current !== null && props.detail && props.detail.content) {
+            Content.current.innerHTML = props.detail.content;
+        }
 
-        })();
+    }, [props])
 
-    }, [])
+    console.log(props);
 
     return (
         <div className='article'>
-            <h1>{state.ininArticle ? state.ininArticle.title : ''}</h1>
+            <h1>{props.detail ? props.detail.title : ''}</h1>
+            <div className='description'>
+                <p><span>摘要：</span>{props.detail ? props.detail.description : ''}</p>
+            </div>
             <div ref={Content}>
             </div>
         </div>

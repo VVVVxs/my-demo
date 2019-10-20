@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { IInitState } from './store';
 const reducer =  (state: IInitState, action: { type: string, payload: any }) => {
     switch (action.type) {

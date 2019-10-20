@@ -11,7 +11,7 @@ const NavList: React.FC = () => {
         { route: '/write', name: '写博客' },
     ]
     const { useState } = React;
-    const [active, setActive] = useState(router[0].route);
+    const [active, setActive] = useState(window.location.pathname);
     const changeRoute = (route: string) => {
         setActive(route)
     }

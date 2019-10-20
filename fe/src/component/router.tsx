@@ -2,12 +2,14 @@ import * as React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from './home';
 import Edit from './edit';
+import ArticleDetail from './articleDetail';
 import ArticleList from './articleList';
 
 const Routes = () => {
     return (
         <React.Fragment>
             <Switch>
+                <Route excat path="/detail/:id" component={ArticleDetail} />
                 <Route excat path="/list" component={ArticleList} />
                 <Route excat path="/write" component={Edit} />
                 <Route excat path="/" component={Home} />

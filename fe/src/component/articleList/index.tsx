@@ -1,21 +1,20 @@
 import * as React from 'react';
 import { List, Avatar } from 'antd';
 import { reducer, initState, IArticleList } from './reducer';
-import { getArticleList } from './request';
+import { useDataApi } from '../../util/hook';
+const ConfigBaseURL = require('../../../config/appConfig.js');
 const ArticleList = () => {
-    const { useReducer, useEffect } = React;
+    const { useReducer } = React;
     const [state, dispatch]: [IArticleList, any] = useReducer(reducer, initState)
 
-    useEffect(() => {
-        async function getList() {
-            const result = await getArticleList();
-            dispatch({ type: 'GET_ARTICLE_LIST', payload: result });
+    useDataApi('get-article-list', 'post', dispatch, 'GET_ARTICLE_LIST');
 
-        }
-        getList();
-    }, [])
+    const jumpArticleDetail = (e: Event | undefined, id: string) => {
+        e ? e.preventDefault() : '';
+        window.open(`http://localhost:8080/detail/${id}`);
+    }
 
-
+    console.log('state', state);
     return (
         <List
             itemLayout="horizontal"
@@ -24,8 +23,8 @@ const ArticleList = () => {
                 <List.Item>
                     <List.Item.Meta
                         avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                        title={<a href="https://ant.design">{item.title}</a>}
-                        description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                        title={<a onClick={jumpArticleDetail.bind(null, event, item._id)}>{item.title}</a>}
+                        description={item.description}
                     />
                 </List.Item>
             )}
