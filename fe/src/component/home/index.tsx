@@ -12,6 +12,7 @@ const Home: React.FC = () => {
                 <div className='mainLeft'>
                     <Banner />
                     <ArticleBox />
+                    <div>hello world</div>
                 </div>
                 <div className='mainRight'>
                     <Tips />
