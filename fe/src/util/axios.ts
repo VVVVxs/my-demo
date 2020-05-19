@@ -18,7 +18,7 @@ Service.interceptors.request.use(config => {
 // 添加响应拦截器
 Service.interceptors.response.use(response => {
     // 请求响应时做些什么
-    return response.data
+    return response.data;
 }, error => {
     console.log('TCL: error', error)
     const msg = error.Message !== undefined ? error.Message : ''
