@@ -3,16 +3,13 @@ import { List, Avatar, Spin } from 'antd';
 import { useRequest } from '@umijs/hooks';
 import { ArticleService } from '../../service';
 import { reducer, initState, IArticleList } from './reducer';
+import { IArticle } from '../../dataTypes/IArticle';
 import { useDataApi } from '../../util/hook';
 const ConfigBaseURL = require('../../../config/appConfig.js');
 const ArticleList = () => {
     const { useReducer } = React;
     const [state, dispatch]: [IArticleList, any] = useReducer(reducer, initState)
-    const { data, error, loading } = useRequest(ArticleService.getArticleList)
-    console.log('data', data);
-    console.log('error', error);
-    console.log('loading', loading);
-    useDataApi('get-article-list', 'post', dispatch, 'GET_ARTICLE_LIST');
+    const { data: articleList, error, loading }: { data: IArticle[], error: any, loading: boolean } = useRequest(ArticleService.getArticleList, {})
 
     const jumpArticleDetail = (e: Event | undefined, id: string) => {
         e ? e.preventDefault() : '';
@@ -23,7 +20,7 @@ const ArticleList = () => {
         <Spin spinning={loading}>
             <List
                 itemLayout="horizontal"
-                dataSource={state.articleList}
+                dataSource={articleList}
                 renderItem={item => (
                     <List.Item>
                         <List.Item.Meta
