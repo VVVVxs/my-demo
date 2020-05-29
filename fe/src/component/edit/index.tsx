@@ -11,7 +11,7 @@ interface IWarn {
     contentWarn: boolean;
 }
 const { useEffect, useRef, useReducer, useState } = React;
-const Edit: React.FC = () => {
+const Edit = () => {
     const { TextArea } = Input;
     const [state, dispatch]: [IEdit, any] = useReducer(reducer, initState);
     const [Editor, setEditor] = useState(); // 

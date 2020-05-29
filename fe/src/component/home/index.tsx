@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Banner, Tips, AvatarCar, ArticleBox } from './componets/index';
-import '../../style/Home/index.less';
-import '../../style/index.less';
 import { Provider } from './store/Provider';
 import initState from './store/store';
 import reducer from './store/reducer';
-const Home: React.FC = () => {
+import '../../style/index.less';
+import '../../style/Home/index.less';
+const Home = () => {
     return (
         <div>
             <Provider reducer={reducer} initValue={initState()}>
@@ -18,7 +18,6 @@ const Home: React.FC = () => {
                     <AvatarCar />
                 </div>
             </Provider>
-
         </div>
     )
 }

@@ -18,11 +18,7 @@ const Banner: React.FC = () => {
         const timeToogle = self.setInterval(autoToogle, 10);
         setTimeerCount(timeToogle);
         latestCount.current = timeToogle;
-        // 如果要实现 componentWillUnmount，
-        // 在末尾处返回一个函数
-        // React 在该函数组件卸载前调用该方法
-        // 其命名为 cleanup 是为了表明此函数的目的，
-        // 但其实也可以返回一个箭头函数或者给起一个别的名字。
+
         return () => {
 
             window.clearInterval(latestCount.current);

@@ -1,4 +1,6 @@
 # dependencies 
 node_modules/
+# 后台打包
 dev/
-static/
+# 前端打包
+dist

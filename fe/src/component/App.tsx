@@ -1,22 +1,23 @@
-import * as React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import Routes from './router';
 import 'antd/dist/antd.css';
-import { NavList } from './home/componets/index';
-import { Layout } from 'antd';
-const { Header, Content } = Layout;
+import * as React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Routes from './router';
+import Login from '../component/login';
+import config from '../config/routerConfig';
 
 const App: React.FC = () => {
+    const currentPath = window.location.pathname;
+
+    console.log('window', currentPath.indexOf('/login'));
     return (
         <BrowserRouter>
-            <Layout className='myBlog'>
-                <Header className='blogHeader' >
-                    <NavList />
-                </Header>
-                <Content className="main">
+            {currentPath.indexOf('/login') === 0 ?
+                (
+                    <Route excat path="/login" component={Login} />
+                ) : (
                     <Routes />
-                </Content>
-            </Layout>
+                )
+            }
         </BrowserRouter>
     )
 }
