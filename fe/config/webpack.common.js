@@ -27,30 +27,40 @@ const config = {
                 }
             },
             {
+                test: /\.(png|jpg|jpeg|svg)$/,
+                loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]'
+            },
+            // {
+            //     test: /\.(png|jpg|jpeg|svg)$/,
+            //     use: [{
+            //         loader: 'file-loader',
+            //         options: {
+            //             name: 'images/[name]_[hash].[ext]',
+            //             // publicPath: '/static/images/',
+            //             // outputPath: 'images/',
+            //             limit: 10,
+            //         }
+            //     },'url-loader']
+            // },
+            {
                 test: /\.css$/,
                 loader: ['style-loader', 'css-loader']
             }, {
                 test: /\.less$/,
-                loader: ['style-loader', 'css-loader', 'less-loader']
-            },
-            {
-                test: /\.(png|jgp|svg)$/,
-                use:[
-                    {
-                        loader:'file-loader',
-                        options:{
-                            path:'dist',
-                            publicPath:'./static',
-                        }
-
-                    },
-                    'url-loader',
-                ]
+                loader: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
             }
         ]
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx']
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        alias: {
+            '@images': path.resolve(__dirname, '../src/static/images'),
+        }
+    },
+    optimization: {
+        splitChunks: {
+            chunks: "all", // 所有的 chunks 代码公共的部分分离出来成为一个单独的文件
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({

@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const ConfigBaseURL = require('./appConfig.js').ConfigBaseURL
 const commonConfig = require('./webpack.common.js');
 const merge = require('webpack-merge');
@@ -9,6 +10,9 @@ const config = {
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
     },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
     devServer: {
         historyApiFallback: true,
         proxy: {

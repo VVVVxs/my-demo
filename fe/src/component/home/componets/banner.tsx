@@ -1,11 +1,14 @@
 import * as React from 'react';
+import imgone from '@images/1.jpg';
+import imgtwo from '@images/1.jpg';
+import imgthree from '@images/1.jpg';
 const { useEffect, useState, useRef } = React;
 
 const Banner: React.FC = () => {
     const images: string[] = [
-        '../../../../static/images/1.jpg',
-        '../../../../static/images/2.jpg',
-        '../../../../static/images/3.jpg'
+        imgone,
+        imgtwo,
+        imgthree
     ]
     const [marginLeft, setMarginLeft] = useState(0); 
     const [active, setActive] = useState(0);

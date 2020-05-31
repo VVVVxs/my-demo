@@ -3,4 +3,4 @@ node_modules/
 # 后台打包
 dev/
 # 前端打包
-dist
+dist/

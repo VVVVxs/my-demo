@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { PersonalTotal } from './index';
 import { Card, Icon, Avatar } from 'antd';
+import avatorBackground from '@images/beijing.jpg';
+import avator from '@images/avatar.jpg';
 const AvatarCar = () => {
         const { Meta } = Card;
 
@@ -10,7 +12,7 @@ const AvatarCar = () => {
                         cover={
                                 <img
                                         alt="example"
-                                        src="../../../../static/images/beijing.jpg"
+                                        src={avatorBackground}
                                 />
                         }
                         actions={[
@@ -20,7 +22,7 @@ const AvatarCar = () => {
                         ]}
                 >
                         <Meta
-                                avatar={<Avatar src="../../../../static/images/avatar.jpg" />}
+                                avatar={<Avatar src={avator} />}
                                 title="-午夜闲逛者-"
                                 description="很期待成功博客建立起来"
                         />

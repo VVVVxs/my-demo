@@ -2,8 +2,7 @@ import 'antd/dist/antd.css';
 import * as React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Routes from './router';
-import Login from '../component/login';
-import config from '../config/routerConfig';
+import Login from './login/index';
 
 const App: React.FC = () => {
     const currentPath = window.location.pathname;

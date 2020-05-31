@@ -1,10 +1,19 @@
 // .babelrc
 {
     "presets": [
-        "env",
-        "react"
+        [
+            "@babel/preset-env",
+            {
+                // 防止报错
+                "corejs": "3",
+                "useBuiltIns": "usage",
+                // "modules": "commonjs"
+            }
+        ],
+        "@babel/preset-react"
     ],
     "plugins": [
+        "@babel/plugin-transform-runtime",
         [
             "import",
             {
