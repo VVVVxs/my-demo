@@ -1,14 +1,6 @@
 import * as Router from 'koa-router';
-import { article } from '../modal/article';
+import article from '../modal/article';
 import { baseUrl } from '../config/index';
-export const testInit = async (ctx: Router.IRouterContext, next: () => Promise<any>) => {
-    try {
-        const result = await article.find({});
-        ctx.body = result;
-    } catch (err) {
-        ctx.throw(500);
-    }
-}
 export const addArticle = async (ctx: Router.IRouterContext, next: () => Promise<any>) => {
     try {
         const { title, content, description } = ctx.request.body;

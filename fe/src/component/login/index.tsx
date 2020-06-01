@@ -1,17 +1,44 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Tabs, Icon } from 'antd';
+import { useRequest } from '@umijs/hooks';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
-
+import LoginService from '../../service/loginService';
 import logImg from '@images/logo.png';
 import './index.less';
+
 const Login = ({ form }: { form: WrappedFormUtils }) => {
     const FormItem = Form.Item;
     const { getFieldDecorator } = form;
     const formItemLayout = {
-        labelCol: { span: 4 },
-        wrapperCol: { span: 20 },
+        labelCol: { span: 6 },
+        wrapperCol: { span: 18 },
     }
     const [tab, setTab] = useState('login');
+    const { loading, run } = useRequest(LoginService.register, {
+        manual: true,
+        onSuccess: (result, params) => {
+            console.log('result', result);
+        }
+    });
+
+    const onSubmit = () => {
+        form.validateFields(tab === 'login' ? ['username', 'password'] : ['registerUsername', 'registerPassword'], (err, value) => {
+            if (!err) {
+                const parmas = {
+                    username: undefined,
+                    password: undefined,
+                }
+                if (tab === 'login') {
+                    parmas.username = value.username;
+                    parmas.password = value.password;
+                } else {
+                    parmas.username = value.registerUsername;
+                    parmas.password = value.registerPassword;
+                }
+                run(parmas)
+            }
+        })
+    }
     return (
         <div className="login">
             <div className="logoImage">
@@ -28,12 +55,22 @@ const Login = ({ form }: { form: WrappedFormUtils }) => {
                             )}
                             key="login">
                             <FormItem label="用户名" {...formItemLayout}>
-                                {getFieldDecorator('username')(
+                                {getFieldDecorator('username', {
+                                    rules: [{
+                                        required: true,
+                                        message: '请输入用户名',
+                                    }]
+                                })(
                                     <Input placeholder="请输入用户名" />
                                 )}
                             </FormItem>
                             <FormItem label="密码" {...formItemLayout}>
-                                {getFieldDecorator('password')(
+                                {getFieldDecorator('password', {
+                                    rules: [{
+                                        required: true,
+                                        message: '请输入密码',
+                                    }]
+                                })(
                                     <Input placeholder="密码" type="password" />
                                 )}
                             </FormItem>
@@ -46,12 +83,22 @@ const Login = ({ form }: { form: WrappedFormUtils }) => {
                             )}
                             key="register">
                             <FormItem label="用户名" {...formItemLayout}>
-                                {getFieldDecorator('registerUsername')(
+                                {getFieldDecorator('registerUsername', {
+                                    rules: [{
+                                        required: true,
+                                        message: '请输入用户名',
+                                    }]
+                                })(
                                     <Input placeholder="请输入用户名" />
                                 )}
                             </FormItem>
                             <FormItem label="密码" {...formItemLayout}>
-                                {getFieldDecorator('registerPassword')(
+                                {getFieldDecorator('registerPassword', {
+                                    rules: [{
+                                        required: true,
+                                        message: '请输入密码',
+                                    }]
+                                })(
                                     <Input placeholder="密码" type="password" />
                                 )}
                             </FormItem>
@@ -59,8 +106,8 @@ const Login = ({ form }: { form: WrappedFormUtils }) => {
                     </Tabs>
 
                     <FormItem>
-                        <Button style={{ width: '100%', height: '38px', borderRadius: '20px' }} type="primary">
-                            {tab==='login'?'登录':'注册'}
+                        <Button style={{ width: '100%', height: '38px', borderRadius: '20px' }} type="primary" onClick={onSubmit}>
+                            {tab === 'login' ? '登录' : '注册'}
                         </Button>
                     </FormItem>
                 </Form>

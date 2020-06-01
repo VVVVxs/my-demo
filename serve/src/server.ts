@@ -8,7 +8,7 @@ import router from './router';
 import { db } from './config/dbconfig';
 import { initModal } from './modal/index';
 // 连接数据库
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }, initModal).then(() => {
+mongoose.connect(db, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }, initModal).then(() => {
     const app = new koa();
     // 中间件
     app.use(bodyParser({
@@ -21,7 +21,7 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }, initMo
         try {
             await next();
         } catch (err) {
-            console.log(err);
+            console.log('errerrerrerrerr', err);
             err.status = err.statusCode || err.status || 500;
             throw err;
         }

@@ -1,9 +1,8 @@
-import axios from 'axios'
+import axios from 'axios';
 export default class LoginService {
-    static login = (payload: any): Promise<any> => {
-        console.log('payload', payload);
+    static register = (payload: any): Promise<any> => {
         return new Promise((resolve) => {
-            axios.post(`/api/login`, payload).then((res) => {
+            axios.post(`/api/signup`, payload).then((res) => {
                 resolve(res.data);
             })
         });

@@ -9,4 +9,4 @@ const schema = new Schema({
     description: String,
     isDeleted: { type: Number, default: 0 }
 })
-export const article = model('article', schema);
+export default model('article', schema);
