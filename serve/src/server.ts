@@ -10,6 +10,9 @@ import { initModal } from './modal/index';
 // 连接数据库
 mongoose.connect(db, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }, initModal).then(() => {
     const app = new koa();
+    app.on('error', (err, ctx) => {
+        console.error('server error', err);
+    })
     // 中间件
     app.use(bodyParser({
         jsonLimit: '16mb'
@@ -22,12 +25,15 @@ mongoose.connect(db, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTo
             await next();
         } catch (err) {
             console.log('errerrerrerrerr', err);
-            err.status = err.statusCode || err.status || 500;
-            throw err;
+            ctx.body = {
+                code: 500,
+                msg: '请求异常',
+                data: null,
+            }
+            ctx.app.emit('error', err, ctx);
         }
     })
     app.use(router.routes()).use(router.allowedMethods())
-
 
     app.listen(3000)
 })

@@ -3,8 +3,8 @@ import * as bcrypt from 'bcrypt';
 const schema: Schema = new Schema({
     username: {
         type: String,
-        required: true,
-        index: { unique: true }
+        required: [true, '请输入用户名'],
+        unique: [true, '当前用户名已被注册'],
     },
     password: {
         type: String,
@@ -24,7 +24,6 @@ schema.pre('save', function (next) {
                 if (err) {
                     return next();
                 }
-                console.log('hash', hash);
                 user.password = hash;
                 next();
             })
@@ -32,11 +31,10 @@ schema.pre('save', function (next) {
     } else {
         return next();
     }
-    console.log('this', this);
 })
 
 // 校验用户输入密码是否正确
-schema.methods.comparePassword = function (passw: any, cb: any) {
+schema.methods.comparePassword = function (passw: string, cb: any) {
     bcrypt.compare(passw, this.password, (err, isMatch) => {
         if (err) {
             return cb(err);
