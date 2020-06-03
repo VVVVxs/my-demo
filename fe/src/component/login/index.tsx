@@ -14,28 +14,22 @@ const Login = ({ form }: { form: WrappedFormUtils }) => {
         wrapperCol: { span: 18 },
     }
     const [tab, setTab] = useState('login');
-    const { loading, run } = useRequest(LoginService.register, {
-        manual: true,
-        onSuccess: (result, params) => {
-            console.log('result', result);
-        }
-    });
+    const register = useRequest(LoginService.register, { manual: true });
+    const login = useRequest(LoginService.login, { manual: true });
 
     const onSubmit = () => {
         form.validateFields(tab === 'login' ? ['username', 'password'] : ['registerUsername', 'registerPassword'], (err, value) => {
             if (!err) {
-                const parmas = {
-                    username: undefined,
-                    password: undefined,
-                }
+                const parmas= { username: '', password: '' };
                 if (tab === 'login') {
                     parmas.username = value.username;
                     parmas.password = value.password;
+                    login.run(parmas);
                 } else {
                     parmas.username = value.registerUsername;
                     parmas.password = value.registerPassword;
+                    register.run(parmas)
                 }
-                run(parmas)
             }
         })
     }

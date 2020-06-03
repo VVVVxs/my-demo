@@ -5,11 +5,12 @@
     "version": "0.2.0",
     "configurations": [
 
+
         {
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "${workspaceFolder}\\serve\\dev\\server.js",
+            "program": "${workspaceFolder}\\serve\\src\\server.js",
             "cwd": "${workspaceFolder}/serve",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"

@@ -3,12 +3,12 @@ import {
     addArticle, getArticle, getArticleList,
     uploadImage, getArticleById
 } from './controller/home';
-import { signup } from './controller/common';
+import { signup, signin } from './controller/common';
 import { upload } from './config/multer';
 const router = new Router({
     prefix: '/api',  // 统一前缀，接口地址全部是xxx/api/
 })
-// router.post('/login', login)
+router.post('/signin', signin)
 router.post('/signup', signup)
 router.post('/new-article', addArticle); // 新增文章
 router.post('/get-article', getArticle); // 获取最新的一篇文章
