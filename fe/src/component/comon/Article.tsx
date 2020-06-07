@@ -15,8 +15,6 @@ const Article = (props: IArticleProps) => {
 
     }, [props])
 
-    console.log(props);
-
     return (
         <div className='article'>
             <h1>{props.detail ? props.detail.title : ''}</h1>

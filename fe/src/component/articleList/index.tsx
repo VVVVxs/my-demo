@@ -4,7 +4,6 @@ import { useRequest } from '@umijs/hooks';
 import { ArticleService } from '../../service';
 import { reducer, initState, IArticleList } from './reducer';
 import { IArticle } from '../../dataTypes/IArticle';
-import { useDataApi } from '../../util/hook';
 const ConfigBaseURL = require('../../../config/appConfig.js');
 const ArticleList = () => {
     const { useReducer } = React;

@@ -16,11 +16,11 @@ const Login = ({ form }: { form: WrappedFormUtils }) => {
     const [tab, setTab] = useState('login');
     const register = useRequest(LoginService.register, { manual: true });
     const login = useRequest(LoginService.login, { manual: true });
-
+    console.log('login',login);
     const onSubmit = () => {
         form.validateFields(tab === 'login' ? ['username', 'password'] : ['registerUsername', 'registerPassword'], (err, value) => {
             if (!err) {
-                const parmas= { username: '', password: '' };
+                const parmas = { username: '', password: '' };
                 if (tab === 'login') {
                     parmas.username = value.username;
                     parmas.password = value.password;
@@ -100,7 +100,12 @@ const Login = ({ form }: { form: WrappedFormUtils }) => {
                     </Tabs>
 
                     <FormItem>
-                        <Button style={{ width: '100%', height: '38px', borderRadius: '20px' }} type="primary" onClick={onSubmit}>
+                        <Button
+                            style={{ width: '100%', height: '38px', borderRadius: '20px' }}
+                            type="primary"
+                            onClick={onSubmit}
+                            loading={tab === 'login' ? login.loading : register.loading}
+                        >
                             {tab === 'login' ? '登录' : '注册'}
                         </Button>
                     </FormItem>

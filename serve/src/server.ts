@@ -4,9 +4,12 @@ import * as logger from 'koa-logger';
 import * as mongoose from 'mongoose';
 import * as path from 'path';
 import * as Static from 'koa-static';
+import * as jwt from 'jsonwebtoken';
 import router from './router';
 import { db } from './config/dbconfig';
+import { whiteList, secretKey } from './config/index';
 import { initModal } from './modal/index';
+
 // 连接数据库
 mongoose.connect(db, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }, initModal).then(() => {
     const app = new koa();
@@ -21,8 +24,38 @@ mongoose.connect(db, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTo
     app.use(Static(path.join(__dirname, '../static/images')));
     app.use(logger());
     app.use(async (ctx, next) => {
+        console.log('444');
         try {
-            await next();
+            const url = ctx.originalUrl;
+            console.log('url', url);
+            if (whiteList.includes(url)) {
+                await next();
+            } else {
+                // 验证是否登录
+                const uerToken = ctx.cookies.get('u_token');
+                if (uerToken) {
+                    await jwt.verify(uerToken, secretKey, async (err, decode) => {
+                        console.log('err', err);
+                        if (err) {
+                            ctx.body = {
+                                code: 2,
+                                mse: '请登录',
+                                data: null
+                            }
+                        } else {
+                            console.log('decode', decode);
+                            await next();
+                        }
+                    })
+                } else {
+                    console.log(123);
+                    ctx.body = {
+                        code: 2,
+                        mse: '请登录',
+                        data: null
+                    }
+                }
+            }
         } catch (err) {
             console.log('errerrerrerrerr', err);
             ctx.body = {

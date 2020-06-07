@@ -10,7 +10,7 @@
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "${workspaceFolder}\\serve\\src\\server.js",
+            "program": "${workspaceFolder}\\serve\\dev\\server.js",
             "cwd": "${workspaceFolder}/serve",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
