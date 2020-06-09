@@ -6,8 +6,6 @@ import Login from './login/index';
 
 const App: React.FC = () => {
     const currentPath = window.location.pathname;
-
-    console.log('window', currentPath.indexOf('/login'));
     return (
         <BrowserRouter>
             {currentPath.indexOf('/login') === 0 ?

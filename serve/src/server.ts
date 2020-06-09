@@ -27,7 +27,9 @@ mongoose.connect(db, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTo
         console.log('444');
         try {
             const url = ctx.originalUrl;
+            const referer = ctx.request.header.referer;
             console.log('url', url);
+            console.log('referer', referer);
             if (whiteList.includes(url)) {
                 await next();
             } else {
@@ -35,12 +37,11 @@ mongoose.connect(db, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTo
                 const uerToken = ctx.cookies.get('u_token');
                 if (uerToken) {
                     await jwt.verify(uerToken, secretKey, async (err, decode) => {
-                        console.log('err', err);
                         if (err) {
                             ctx.body = {
                                 code: 2,
                                 mse: '请登录',
-                                data: null
+                                data: referer
                             }
                         } else {
                             console.log('decode', decode);

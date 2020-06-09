@@ -19,7 +19,7 @@ Service.interceptors.request.use(config => {
 // 添加响应拦截器
 Service.interceptors.response.use(response => {
     if(response.data&&response.data.code===2){
-        window.location.href='/login';
+        window.location.href=`/login?url=${response.data}`;
     }
     console.log('response', response);
     // 请求响应时做些什么
