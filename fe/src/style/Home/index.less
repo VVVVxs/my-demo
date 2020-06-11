@@ -1,5 +1,6 @@
 .myBlog {
     background: #fff;
+
     .blogHeader {
         background-color: #20394c;
 
@@ -12,27 +13,31 @@
             display         : flex;
             margin          : 0 auto;
 
+            ul {
+                display: flex;
+                width: 100%;
+                li {
+                    flex : column;
+                    width: 10%;
+
+                    a {
+                        color           : #fff;
+                        width           : 100%;
+                        background-color: #20394c;
+                        text-align      : center;
+                        display         : block;
+                    }
+
+                    a:hover {
+                        background-color: rgba(47, 106, 151, 0.5);
+                    }
+                }
+            }
+
             .active {
                 a {
                     background: rgba(47, 106, 151, 0.5);
 
-                }
-            }
-
-            li {
-                flex : column;
-                width: 10%;
-
-                a {
-                    color           : #fff;
-                    width           : 100%;
-                    background-color: #20394c;
-                    text-align      : center;
-                    display         : block;
-                }
-
-                a:hover {
-                    background-color: rgba(47, 106, 151, 0.5);
                 }
             }
         }
@@ -101,8 +106,9 @@
                     }
                 }
             }
-            .articleBox{
-                margin: 20px 0;
+
+            .articleBox {
+                margin : 20px 0;
                 padding: 10px;
             }
         }

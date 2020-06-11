@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+
 import { message } from 'antd';
 //使用create方法创建axios实例
 
@@ -17,13 +18,14 @@ Service.interceptors.request.use(config => {
     return config
 })
 // 添加响应拦截器
-Service.interceptors.response.use(response => {
-    if(response.data&&response.data.code===2){
-        window.location.href=`/login?url=${response.data}`;
+Service.interceptors.response.use((res) => {
+    if (res.data && res.data.code === 2) {
+        window.location.href = `/login?url=${res.data.data}`;
+    } else if (res.data && res.data.code === -1) {
+        message.warning(res.data.msg || '请求异常')
     }
-    console.log('response', response);
     // 请求响应时做些什么
-    return response.data;
+    return res;
 }, error => {
     console.log('TCL: error', error)
     const msg = error.Message !== undefined ? error.Message : ''

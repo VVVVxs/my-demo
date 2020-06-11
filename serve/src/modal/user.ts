@@ -34,13 +34,9 @@ schema.pre('save', function (next) {
 })
 
 // 校验用户输入密码是否正确
-schema.methods.comparePassword = function (passw: string, cb: any) {
-    bcrypt.compare(passw, this.password, (err, isMatch) => {
-        if (err) {
-            return cb(err);
-        }
-        cb(null, isMatch);
-    });
+schema.methods.comparePassword = async function (passw: string, cb: any) {
+    const isMatch =  bcrypt.compareSync(passw, this.password);
+    cb(isMatch);
 };
 
 export default model('user', schema);

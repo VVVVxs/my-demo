@@ -24,12 +24,9 @@ mongoose.connect(db, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTo
     app.use(Static(path.join(__dirname, '../static/images')));
     app.use(logger());
     app.use(async (ctx, next) => {
-        console.log('444');
         try {
             const url = ctx.originalUrl;
             const referer = ctx.request.header.referer;
-            console.log('url', url);
-            console.log('referer', referer);
             if (whiteList.includes(url)) {
                 await next();
             } else {
@@ -53,7 +50,7 @@ mongoose.connect(db, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTo
                     ctx.body = {
                         code: 2,
                         mse: '请登录',
-                        data: null
+                        data: referer
                     }
                 }
             }

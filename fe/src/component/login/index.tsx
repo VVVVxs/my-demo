@@ -16,7 +16,6 @@ const Login = ({ form }: { form: WrappedFormUtils }) => {
     const [tab, setTab] = useState('login');
     const register = useRequest(LoginService.register, { manual: true });
     const login = useRequest(LoginService.login, { manual: true });
-    console.log('login',login);
     const onSubmit = () => {
         form.validateFields(tab === 'login' ? ['username', 'password'] : ['registerUsername', 'registerPassword'], (err, value) => {
             if (!err) {
