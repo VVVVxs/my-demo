@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, Dropdown, Menu } from 'antd';
+import { Avatar, Dropdown, Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom'
 interface IRouter {
     route: string,
@@ -20,9 +20,7 @@ const NavList: React.FC = () => {
         return (
             <Menu>
                 <Menu.Item>
-                    <a>
-                        退出登陆
-                    </a>
+                    <a><Icon type="logout" style={{ paddingRight: 10 }} />退出登陆</a>
                 </Menu.Item>
             </Menu>
         )
@@ -39,7 +37,7 @@ const NavList: React.FC = () => {
                 })}
             </ul>
             <div>
-                <Dropdown overlay={menu}>
+                <Dropdown overlay={menu} placement="bottomCenter">
                     <Avatar
                         size={48}
                         icon="user"

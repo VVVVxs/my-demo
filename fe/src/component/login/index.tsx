@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, Tabs, Icon } from 'antd';
 import { useRequest } from '@umijs/hooks';
+import { getCookie } from '../../util/Cookie';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 import LoginService from '../../service/loginService';
 import logImg from '@images/logo.png';
@@ -16,6 +17,12 @@ const Login = ({ form }: { form: WrappedFormUtils }) => {
     const [tab, setTab] = useState('login');
     const register = useRequest(LoginService.register, { manual: true });
     const login = useRequest(LoginService.login, { manual: true });
+    useEffect(() => {
+        const token = getCookie('u_token')
+        if (token) {
+            window.location.href = '/';
+        }
+    }, [])
     const onSubmit = () => {
         form.validateFields(tab === 'login' ? ['username', 'password'] : ['registerUsername', 'registerPassword'], (err, value) => {
             if (!err) {

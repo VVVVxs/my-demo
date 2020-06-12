@@ -1,7 +1,7 @@
 import * as React from 'react';
 import imgone from '@images/1.jpg';
-import imgtwo from '@images/1.jpg';
-import imgthree from '@images/1.jpg';
+import imgtwo from '@images/2.jpg';
+import imgthree from '@images/3.jpg';
 const { useEffect, useState, useRef } = React;
 
 const Banner: React.FC = () => {
