@@ -10,7 +10,14 @@ export default class ArticleService {
     }
     static getArticle = (): Promise<any> => {
         return new Promise((resolve) => {
-            axios.post(`/api/get-article`).then((res) => {
+            axios.post(`/api/get-article`).then(({data}) => {
+                resolve(data);
+            })
+        });
+    }
+    static getArticleById = (id: string): Promise<any> => {
+        return new Promise((resolve) => {
+            axios.post(`/api/get-article`, { id }).then((res) => {
                 resolve(res.data);
             })
         });

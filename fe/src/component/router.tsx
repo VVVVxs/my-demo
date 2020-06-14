@@ -1,12 +1,15 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { Layout } from 'antd';
 import { Route, Switch } from 'react-router-dom';
+import { AppService } from '../service';
+import { useRequest } from '@umijs/hooks';
 import { NavList } from './home/componets/index';
 import config from '../config/routerConfig';
 import NotFound from './NotFound';
 const Routes = () => {
     const { Header, Content } = Layout;
-
+    const userInfo = useRequest(AppService.getUserInfo)
+    console.log('userinfo', userInfo);
     return (
         <React.Fragment>
             <Layout className='myBlog'>

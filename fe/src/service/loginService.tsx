@@ -8,11 +8,11 @@ export default class LoginService extends CommonService {
                 if (data.code === 0) {
                     message.success('注册成功');
                     const url = window.location.search.split('=')[1]
-                    window.location.href = url?url:'/';
+                    window.location.href = url ? url : '/';
                 }
                 resolve(data);
             }).catch((err) => {
-                LoginService.handleErro(err);
+                // LoginService.handleErro(err);
                 reject(err);
             })
         });
@@ -22,12 +22,25 @@ export default class LoginService extends CommonService {
             axios.post(`/api/signin`, payload).then(({ data }) => {
                 if (data.code === 0) {
                     const url = window.location.search.split('=')[1]
-                    window.location.href = url?url:'/';
+                    window.location.href = url ? url : '/';
                     message.success('登陆成功');
                 }
                 resolve(data);
             }).catch((err) => {
-                LoginService.handleErro(err);
+                // LoginService.handleErro(err);
+                reject(err);
+            })
+        });
+    }
+    static logout = (): Promise<any> => {
+        return new Promise((resolve, reject) => {
+            axios.post(`/api/logout`).then(({ data }) => {
+                if (data.code === 0) {
+                    window.location.href = '/login';
+                }
+                resolve(data);
+            }).catch((err) => {
+                // LoginService.handleErro(err);
                 reject(err);
             })
         });

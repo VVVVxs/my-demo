@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { initState, reducer } from './reducer';
-import { useDataApi } from '../../util/hook';
+import { Spin } from 'antd';
+import { useRequest } from '@umijs/hooks';
+import { ArticleService } from '../../service';
 import { Article } from '../comon';
+
 const ArticleDetail = () => {
-    const { useReducer } = React;
-    const [state, dispatch] = useReducer(reducer, initState);
     const pathname: string = window.location.pathname;
     const acticleId: string = pathname.substring(pathname.lastIndexOf('/') + 1)
-    useDataApi('get-article-by-id', 'post', dispatch, 'GET_ARTICLE_BY_id', { id: acticleId });
+    const { data, loading } = useRequest(ArticleService.getArticleById.bind(null, acticleId))
     return (
-        <div>
-            <Article detail={state.articleDetail} />
-        </div>
+        <Spin spinning={loading}>
+            <Article detail={data} />
+        </Spin>
     )
 }
 export default ArticleDetail;

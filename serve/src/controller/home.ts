@@ -1,6 +1,7 @@
 import * as Router from 'koa-router';
+import * as path from 'path';
 import article from '../modal/article';
-import { baseUrl } from '../config/index';
+import { hanldSuccess,hanldError } from '../config/handleUnsual';
 export const addArticle = async (ctx: Router.IRouterContext, next: () => Promise<any>) => {
     try {
         const { title, content, description } = ctx.request.body;
@@ -42,12 +43,12 @@ export const getArticleById = async (ctx: Router.IRouterContext, next: () => Pro
 }
 
 export const uploadImage = async (ctx: any, next: () => Promise<any>) => {
+    const { body, files } = ctx.request;
     try {
-        ctx.body = {
-            url: baseUrl + '/' + ctx.req.file.filename
-        }
-
+        const file = ctx.request.files.file;
+        const basename = path.basename(file.path);    //获取图片名称（basename）
+        ctx.body = hanldSuccess(`${ctx.origin}/images/${basename}`)
     } catch (err) {
-        ctx.throw(500);
+        ctx.body = hanldError(err.toString())
     }
 }

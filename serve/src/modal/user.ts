@@ -9,7 +9,13 @@ const schema: Schema = new Schema({
     password: {
         type: String,
         required: true,
-    }
+    },
+    avatorUrl: String,
+    articleAmount: { type: Number, default: 0 },
+    followers: { type: Number, default: 0 },
+    views: { type: Number, default: 0 },
+    signWord: { type: String, default: '这个人很懒，什么都没有留下' },
+    backgroundUrl: String,
 })
 
 // 添加用户保存时中间件对password进行bcrypt加密,这样保证用户密码只有用户本人知道
@@ -35,7 +41,7 @@ schema.pre('save', function (next) {
 
 // 校验用户输入密码是否正确
 schema.methods.comparePassword = async function (passw: string, cb: any) {
-    const isMatch =  bcrypt.compareSync(passw, this.password);
+    const isMatch = bcrypt.compareSync(passw, this.password);
     cb(isMatch);
 };
 

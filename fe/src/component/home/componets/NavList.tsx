@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { Avatar, Dropdown, Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom'
+import { useRequest } from '@umijs/hooks';
+import { LoginService } from '../../../service';
+import avator from '@images/default.jpg';
+
 interface IRouter {
     route: string,
     name: string
@@ -13,6 +17,7 @@ const NavList: React.FC = () => {
     ]
     const { useState } = React;
     const [active, setActive] = useState(window.location.pathname);
+    const logout = useRequest(LoginService.logout, { manual: true })
     const changeRoute = (route: string) => {
         setActive(route)
     }
@@ -20,7 +25,9 @@ const NavList: React.FC = () => {
         return (
             <Menu>
                 <Menu.Item>
-                    <a><Icon type="logout" style={{ paddingRight: 10 }} />退出登陆</a>
+                    <a onClick={logout.run}>
+                        <Icon type="logout" style={{ paddingRight: 10 }} />退出登陆
+                    </a>
                 </Menu.Item>
             </Menu>
         )
@@ -40,7 +47,7 @@ const NavList: React.FC = () => {
                 <Dropdown overlay={menu} placement="bottomCenter">
                     <Avatar
                         size={48}
-                        icon="user"
+                        src={avator}
                         style={{ cursor: "pointer" }}
                     />
                 </Dropdown>

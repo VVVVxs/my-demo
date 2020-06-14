@@ -2,5 +2,6 @@
 node_modules/
 # 后台打包
 dev/
+serve/static/
 # 前端打包
 dist/
